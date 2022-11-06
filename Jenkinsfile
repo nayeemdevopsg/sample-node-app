@@ -20,8 +20,8 @@ pipeline {
 		     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/samplenode-app/pods.yml services.yml nayeem@192.168.122.160:/nayeem/ubuntu/'
 			 script{
 				try{
-				        sh "eval $(minikube docker-env)"
-					sh "ssh nayeem@192.168.122.160 kubectl apply -f ."
+				        
+					sh "eval $(minikube docker-env) && ssh nayeem@192.168.122.160 kubectl apply -f ."
 				}catch(error){
 					sh "ssh nayeem@192.168.122.160 kubectl create -f ."
 				}
