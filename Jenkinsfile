@@ -19,7 +19,7 @@ pipeline {
 		stage('Login to staging server') {
             steps {
                 sshagent(['login-to-minikube']) {		
-		     sh 'ssh nayeem@192.168.122.160 && scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/for-java/pods.yml services.yml nayeem@192.168.122.160:/home/nayeem/'
+		     sh 'ssh nayeem@192.168.122.160 && eval $(minikube docker-env) && && scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/for-java/pods.yml services.yml nayeem@192.168.122.160:/home/nayeem/'
 			 script{
 				try{
 				        
