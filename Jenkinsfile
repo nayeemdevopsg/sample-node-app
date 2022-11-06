@@ -21,7 +21,7 @@ pipeline {
 			 script{
 				try{
 				        
-					sh "eval $(minikube docker-env) && ssh nayeem@192.168.122.160 kubectl apply -f ."
+					sh "'eval $(minikube docker-env)` && ssh nayeem@192.168.122.160 kubectl apply -f ."
 				}catch(error){
 					sh "ssh nayeem@192.168.122.160 kubectl create -f ."
 				}
